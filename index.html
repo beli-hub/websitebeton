@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Варо-бетонов център „Кольо Ганчево"</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      border-bottom: 3px solid #335e96;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    nav .logo img { height: 55px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 30px; }
+    nav ul li a { color: #335e96; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+    nav ul li a:hover { color: #c0392b; }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 25px; height: 3px; background: #335e96; border-radius: 2px; }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      border-bottom: 3px solid #335e96;
+      padding: 16px 24px;
+      gap: 16px;
+    }
+    .mobile-menu a { color: #335e96; text-decoration: none; font-size: 1rem; font-weight: 600; }
+    .mobile-menu.open { display: flex; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      padding: 160px 40px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 58, 95, 0.72);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h2 { font-size: 1.2rem; font-weight: 400; color: #c9c9c9; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+    .hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1px; }
+
+    /* WHY US */
+    .why {
+      background: #f5f5f5;
+      padding: 70px 40px;
+      text-align: center;
+    }
+    .why h2 { font-size: 2rem; color: #335e96; margin-bottom: 50px; }
+    .why-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+    .why-card {
+      background: #fff;
+      border-top: 4px solid #335e96;
+      padding: 30px 24px;
+      width: 220px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .why-card h3 { color: #335e96; margin-bottom: 10px; font-size: 1.1rem; }
+    .why-card p { color: #555; font-size: 0.9rem; line-height: 1.6; }
+
+    /* SERVICES */
+    .services-preview {
+      padding: 70px 40px;
+      text-align: center;
+      background: #fff;
+    }
+    .services-preview h2 { font-size: 2rem; color: #335e96; margin-bottom: 40px; }
+    .services-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .service-item {
+      background: #335e96;
+      color: #fff;
+      width: 190px;
+      height: 110px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 10px;
+      transition: background 0.2s;
+    }
+    .service-item:hover { background: #1e3a5f; }
+
+    /* CONTACTS SUMMARY */
+    .contacts-summary {
+      background: #f5f5f5;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .contacts-summary h2 { font-size: 2rem; color: #335e96; margin-bottom: 30px; }
+    .contacts-grid {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .contact-item { font-size: 1rem; color: #333; line-height: 1.8; }
+    .contact-item strong { color: #335e96; display: block; margin-bottom: 4px; }
+    .contact-item a { color: #333; text-decoration: none; }
+    .contact-item a:hover { color: #335e96; }
+    .more-btn {
+      display: inline-block;
+      background: #335e96;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .more-btn:hover { background: #1e3a5f; }
+
+    /* FOOTER */
+    footer {
+      background: #335e96;
+      color: #fff;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 100px 24px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero h2 { font-size: 1rem; letter-spacing: 2px; }
+
+      .why { padding: 50px 20px; }
+      .why-grid { flex-direction: column; align-items: center; }
+      .why-card { width: 100%; max-width: 340px; }
+
+      .services-preview { padding: 50px 20px; }
+      .services-grid { flex-direction: column; align-items: center; }
+      .service-item { width: 100%; max-width: 340px; height: auto; padding: 18px; }
+
+      .contacts-summary { padding: 50px 20px; }
+      .contacts-grid { flex-direction: column; gap: 20px; align-items: center; }
+
+      footer { font-size: 0.75rem; padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="Logo 2025 1 of 1.png" alt="Кольо Ганчево" />
+    </div>
+    <ul>
+
+      <li><a href="about.html">За нас</a></li>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Начало</a>
+    <a href="about.html">За нас</a>
+    <a href="services.html">Услуги</a>
+    <a href="contact.html">Контакти</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Варо-бетонов център</h2>
+      <h1>„Кольо Фичето"</h1>
+    </div>
+  </section>
+
+  <section class="why">
+    <h2>Защо да изберете нас</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Опит</h3>
+        <p>Над 25 години надеждна бетонна работа в региона.</p>
+      </div>
+      <div class="why-card">
+        <h3>Качество</h3>
+        <p>Висококачествени материали и строг контрол на качеството при всеки проект.</p>
+      </div>
+      <div class="why-card">
+        <h3>Навреме</h3>
+        <p>Уважаваме вашия график и изпълняваме ангажиментите си.</p>
+      </div>
+      <div class="why-card">
+        <h3>Лицензирани</h3>
+        <p>Напълно лицензирани, застраховани и обезпечени за ваше спокойствие.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-preview">
+    <h2>Нашите услуги</h2>
+    <div class="services-grid">
+      <div class="service-item">Производство и доставка на бетон</div>
+      <div class="service-item">Вар</div>
+      <div class="service-item">Инертни материали</div>
+      <div class="service-item">Механизация</div>
+    </div>
+  </section>
+
+  <section class="contacts-summary">
+    <h2>Контакти</h2>
+    <div class="contacts-grid">
+      <div class="contact-item">
+        <strong>Адрес</strong>
+        гр. Стара Загора, ул. Примерна 1
+      </div>
+      <div class="contact-item">
+        <strong>Телефон</strong>
+        <a href="tel:+359000000000">+359 000 000 000</a>
+      </div>
+      <div class="contact-item">
+        <strong>Имейл</strong>
+        <a href="mailto:info@koljoganczevo.bg">info@kolyoficheto.bg</a>
+      </div>
+      <div class="contact-item">
+        <strong>Работно време</strong>
+        Пон–Пет: 08:00–17:00
+      </div>
+    </div>
+    <a href="contact.html" class="more-btn">Повече информация</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Варо-бетонов център „Кольо Фичето". Всички права запазени.</p>
+  </footer>
+
+</body>
+</html>
