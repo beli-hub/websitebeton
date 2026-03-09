@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Услуги – Варо-бетонов център „Кольо Фичето"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      border-bottom: 3px solid #335e96;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo img { height: 55px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul li a {
+      color: #335e96;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: #c0392b; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 25px; height: 3px; background: #335e96; border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: #fff; border-bottom: 3px solid #335e96; padding: 16px 24px; gap: 16px; }
+    .mobile-menu a { color: #335e96; text-decoration: none; font-size: 1rem; font-weight: 600; }
+    .mobile-menu.open { display: flex; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: #335e96;
+      color: #fff;
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .page-hero .label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    /* SERVICES GRID */
+    .services-section {
+      padding: 80px 60px;
+      background: #f7f7f7;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e8e8e8;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .service-card:hover {
+      box-shadow: 0 12px 40px rgba(51,94,150,0.13);
+      transform: translateY(-4px);
+    }
+    .service-card-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .service-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-card-image img { transform: scale(1.05); }
+    .service-card-body {
+      padding: 32px 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+    .service-card-body h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e3a5f;
+      line-height: 1.2;
+    }
+    .service-card-body p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* CLOSING */
+    .closing {
+      background: #1e3a5f;
+      color: #fff;
+      padding: 90px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .closing h2 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      max-width: 520px;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+    .closing h2 em {
+      font-style: normal;
+
+      color: #c9c9c9;
+      font-weight: 300;
+    }
+    .closing a {
+      flex-shrink: 0;
+      background: #335e96;
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 2px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .closing a:hover { background: #c0392b; }
+
+    /* FOOTER */
+    footer {
+      background: #335e96;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+
+      .page-hero { padding: 50px 24px; }
+      .page-hero h1 { font-size: 2.2rem; }
+
+      .services-section { padding: 40px 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card-image { height: 200px; }
+      .service-card-body { padding: 24px; }
+
+      .closing { flex-direction: column; padding: 60px 24px; text-align: center; }
+      .closing h2 { font-size: 1.6rem; }
+
+      footer { font-size: 0.75rem; padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="Logo 2025 1 of 1.png" alt="Кольо Фичето"></a>
+    </div>
+    <ul>
+      <li><a href="about.html">За нас</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <button class="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="about.html">За нас</a>
+    <a href="contact.html">Контакти</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="label">Какво предлагаме</div>
+    <h1>Нашите услуги</h1>
+  </div>
+
+  <section class="services-section">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="concrete-truck-capacity-header-e1733156744784.jpg" alt="Производство на бетон" />
+        </div>
+        <div class="service-card-body">
+          <h2>Производство и доставка на бетон</h2>
+          <p>Произвеждаме бетон с гарантирано качество и осигуряваме навременна доставка директно до вашия обект. Работим с висококачествени суровини и прилагаме строг контрол на производствения процес.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="Limestone_quarry.jpg" alt="Вар" />
+        </div>
+        <div class="service-card-body">
+          <h2>Вар</h2>
+          <p>Предлагаме качествена вар за строителни и довършителни дейности. Продуктът ни отговаря на всички действащи стандарти и е подходящ за широк спектър от строителни приложения.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="AdobeStock_52878851-1024x680.jpeg" alt="Инертни материали" />
+        </div>
+        <div class="service-card-body">
+          <h2>Инертни материали</h2>
+          <p>Доставяме инертни материали с различни фракции, подходящи за всички видове строителни проекти. Осигуряваме постоянно качество и надеждни срокове на доставка.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Механизация" />
+        </div>
+        <div class="service-card-body">
+          <h2>Механизация</h2>
+          <p>Разполагаме със специализирана техника и оборудване за изпълнение на разнообразни строителни задачи. Нашата механизация гарантира ефективност и прецизност на всеки етап от проекта.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="closing">
+    <h2>Имате проект? <em>Свържете се с нас.</em></h2>
+    <a href="contact.html">Контакти</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Варо-бетонов център „Кольо Фичето". Всички права запазени.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.mobile-menu').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

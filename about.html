@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>За нас – Варо-бетонов център „Кольо Фичето"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      border-bottom: 3px solid #335e96;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo img { height: 55px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul li a {
+      color: #335e96;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: #c0392b; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 25px; height: 3px; background: #335e96; border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: #fff; border-bottom: 3px solid #335e96; padding: 16px 24px; gap: 16px; }
+    .mobile-menu a { color: #335e96; text-decoration: none; font-size: 1rem; font-weight: 600; }
+    .mobile-menu.open { display: flex; }
+
+    /* HERO SPLIT */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 560px;
+    }
+    .hero-split-text {
+      background: #335e96;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+    }
+    .hero-split-text .label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .hero-split-text h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    /* HERO IMAGE */
+    .hero-split-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-split-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .hero-split-image:hover img { transform: scale(1.03); }
+
+    /* INTRO LINE */
+    .intro-line {
+      padding: 70px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: center;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .intro-line .big-number {
+      font-size: 5.5rem;
+      font-weight: 900;
+      color: #335e96;
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+    .intro-line .big-number span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #aaa;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .intro-line p {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #555;
+      padding-left: 60px;
+      border-left: 2px solid #335e96;
+      font-weight: 600;
+    }
+
+    /* HISTORY */
+    .history {
+      padding: 80px;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .history p {
+      font-size: 1rem;
+      line-height: 2;
+      color: #555;
+      font-weight: 300;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* CLOSING BANNER */
+    .closing {
+      background: #1e3a5f;
+      color: #fff;
+      padding: 90px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .closing h2 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      max-width: 520px;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+    .closing h2 em {
+      font-style: normal;
+      color: #c9c9c9;
+      font-weight: 300;
+    }
+    .closing a {
+      flex-shrink: 0;
+      background: #335e96;
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 2px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .closing a:hover { background: #c0392b; }
+
+    /* FOOTER */
+    footer {
+      background: #335e96;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-split { grid-template-columns: 1fr; height: auto; }
+      .hero-split-text { padding: 50px 24px; }
+      .hero-split-text h1 { font-size: 2rem; }
+      .hero-split-image { height: 280px; }
+
+      .intro-line { grid-template-columns: 1fr; padding: 50px 24px; gap: 30px; }
+      .intro-line p { padding-left: 24px; border-left: 2px solid #335e96; }
+
+      .history { padding: 50px 24px; }
+
+      .closing { flex-direction: column; padding: 60px 24px; text-align: center; }
+      .closing h2 { font-size: 1.6rem; }
+
+      footer { font-size: 0.75rem; padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="Logo 2025 1 of 1.png" alt="Кольо Фичето"></a>
+    </div>
+    <ul>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <button class="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="services.html">Услуги</a>
+    <a href="contact.html">Контакти</a>
+  </div>
+
+  <section class="hero-split">
+    <div class="hero-split-text">
+      <div class="label">За нас</div>
+      <h1>Варо-бетонов център „Кольо Фичето"</h1>
+    </div>
+    <div class="hero-split-image">
+      <img src="Free Dump Truck Mockup PSD for Vehicle Branding.png" alt="Кольо Фичето камион" />
+    </div>
+  </section>
+
+  <div class="intro-line">
+    <div class="big-number">
+      25+
+      <span>Години опит</span>
+    </div>
+    <p>Създадена с основна дейност в търговията със строителни материали, фирмата постепенно се утвърждава като надежден партньор на строителни компании, инвеститори и частни клиенти.</p>
+  </div>
+
+  <div class="history">
+    <p>През годините натрупаният практически опит, познаването на пазара и близката работа с изпълнители в строителството доведоха до естественото развитие на дружеството в посока производство и доставка на бетон. В отговор на нарастващите изисквания за качество, контрол и срокове, „Бетонов център Кольо Фичето" инвестира в модерна производствена база и специализирана техника. Днес основната дейност на фирмата е производство на бетон с гарантирано качество и навременна доставка до обекта. Работим с висококачествени суровини и прилагаме строг контрол върху производствения процес, за да осигурим устойчивост, здравина и съответствие с действащите строителни стандарти. В продължение на над две десетилетия компанията изгражда репутация на коректен и отговорен партньор, който поставя професионализма и удовлетвореността на клиента на първо място. Нашата цел е да допринасяме за успешната реализация на всеки строителен проект чрез сигурност, качество и дългосрочно доверие.</p>
+  </div>
+
+  <div class="closing">
+    <h2>Готови сме да бъдем <em>Вашият партньор</em> в следващия проект.</h2>
+    <a href="contact.html">Свържете се с нас</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Варо-бетонов център „Кольо Фичето". Всички права запазени.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.mobile-menu').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
